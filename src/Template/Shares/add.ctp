@@ -13,7 +13,7 @@
 <div class="shares form large-9 medium-8 columns content">
     <?= $this->Form->create($share) ?>
     <fieldset>
-        <legend><?= __('Add Share') ?></legend>
+        <legend><?= __('Add A New Share') ?></legend>
         <?php
             echo $this->Form->control('post_id', ['options' => $posts]);
         ?>
