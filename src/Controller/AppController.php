@@ -50,5 +50,28 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
+
+        //pour ajouter la connexion
+        $this->loadComponent('Auth', [
+             'authenticate' => [
+                  'Form' => [ 
+                      'fields' => [
+                           'username' => 'username', 
+                           'password' => 'password' ]
+                            ]
+                         ],
+                          'loginAction' => [ 
+                              'controller' => 'Users', 
+                              'action' => 'login'
+                             ],
+// Si pas autorisé, on renvoit sur la page précédente 'unauthorizedRedirect' =>
+ $this->referer() ]);
+// Permet à l'action "display" de notre PagesController de continuer à fonctionner. Autorise également les actions "read-only".
+ $this->Auth->allow(['display', 'view', 'index']);
+
+    }
+
+    public function beforeFilter(Event $event) { $this->Auth->allow(['index', 'view', 'display']); 
+        $this->Auth->config('authenticate', ['Form']);
     }
 }
