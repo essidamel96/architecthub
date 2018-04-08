@@ -11,12 +11,14 @@
     </ul>
 </nav>
 <div class="posts form large-9 medium-8 columns content">
-    <?= $this->Form->create($post) ?> <!--#<form method="post" action="/Posts/add">-->
+    <?= $this->Form->create($post, ['type' => 'file']) ?> <!--#<form method="post" action="/Posts/add">-->
     <fieldset>
         <legend><?= __('Add Post') ?></legend>
         <?php
             echo $this->Form->control('content');//pour créer un élément de formulaire du même nom
+            echo $this->Form->control('photo', ['type' => 'file']); //////
             echo $this->Form->control('posted_at');
+            
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

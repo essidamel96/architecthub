@@ -48,6 +48,9 @@ class PostsTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+            'photo',
+        ]);
     }
 
     /**
@@ -74,6 +77,15 @@ class PostsTable extends Table
             ->requirePresence('posted_at', 'create')
             ->notEmpty('posted_at');
 
+        $validator
+            ->allowEmpty('photo');
+/*
+        $validator
+            ->scalar('photo')
+            ->maxLength('photo', 255);
+            ->requirePresence('photo', 'create')
+            ->notEmpty('photo');
+*/
         return $validator;
     }
 
