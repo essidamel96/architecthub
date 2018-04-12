@@ -16,7 +16,7 @@
         <legend><?= __('Add Post') ?></legend>
         <?php
             echo $this->Form->control('content');//pour créer un élément de formulaire du même nom
-            echo $this->Form->control('photo', ['type' => 'file']); //////
+            echo $this->Form->control('photo', ['type' => 'file']); 
             echo $this->Form->control('posted_at');
             
         ?>

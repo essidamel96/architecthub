@@ -36,5 +36,6 @@
     <div class="row">
         <h4><?= __('Content') ?></h4>
         <?= $this->Text->autoParagraph(h($post->content)); ?>
+        <img src="/files/Posts/photo/<?= $post->photo ?>" />
     </div>
 </div>

@@ -78,14 +78,10 @@ class PostsTable extends Table
             ->notEmpty('posted_at');
 
         $validator
-            ->allowEmpty('photo');
-/*
-        $validator
-            ->scalar('photo')
-            ->maxLength('photo', 255);
-            ->requirePresence('photo', 'create')
+            ->requirePresence('photo')
             ->notEmpty('photo');
-*/
+
+     
         return $validator;
     }
 

@@ -25,6 +25,7 @@ class Post extends Entity
      * @var array
      */
     protected $_accessible = [
+        'photo'=>true,
         'content' => true,
         'posted_at' => true,
         'created' => true,
