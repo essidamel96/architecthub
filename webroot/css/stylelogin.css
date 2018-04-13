@@ -1,0 +1,42 @@
+@media (max-width: 767px) { }
+@media (min-width: 768px) { }
+@media (min-width:992px)  {}
+@media (min-width: 1200px) {}
+
+body {
+	background-image:url("https://snap-photos.s3.amazonaws.com/img-thumbs/960w/QDHZ5ZR33F.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-size: 25px;
+	font-family: 'Raleway', 'arial';
+	font-weight: 100;
+  }
+  
+.b {
+	color: white;
+	background-color: rgb(82, 157, 226);
+	border: teal;
+	width: 100%;
+	height: 60px;
+	
+  }
+  .np{
+	margin-top: 20vh;
+	line-height:20px;
+	opacity: 0.5;
+	
+  }
+
+  .logo {
+	margin-top: 20vh;
+  }
+  
+  .logo h1 {
+	font-size: 80px;
+	text-align: center;
+	color: #fff;
+  }
+
+
+  
+  
