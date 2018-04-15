@@ -77,7 +77,6 @@ class PostsController extends AppController
         $post = $this->Posts->get($id, [
             'contain' => []
         ]);
-
         if ($post->user_id != $this->Auth->user('user_id')) {
             throw new NotFoundException("Post Not Found");
         }
@@ -105,6 +104,7 @@ class PostsController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $post = $this->Posts->get($id);
+    
         if ($post->user_id != $this->Auth->user('user_id')) {
             throw new NotFoundException("Post Not Found");
         }

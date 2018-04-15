@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Network\Exception\NotFoundException;
 
 /**
  * Users Controller
@@ -34,11 +35,16 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
+        if ($id == null) {
+            $id = $this->Auth->user('user_id');
+        }
         $user = $this->Users->get($id, [
             'contain' => []
         ]);
 
         $this->set('user', $user);
+        
+
     }
 
     /**
@@ -68,8 +74,10 @@ class UsersController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function edit($id = null)
+    public function edit()
     {
+
+        $id = $this->Auth->user('user_id');
         $user = $this->Users->get($id, [
             'contain' => []
         ]);
@@ -92,8 +100,9 @@ class UsersController extends AppController
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete($id = null)
+    public function delete()
     {
+        $id = $this->Auth->user('user_id');
         $this->request->allowMethod(['post', 'delete']); //Définit les méthodes HTTP autorisées, si cela ne correspond pas, une exception MethodNotAllowedException sera lancée
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
@@ -119,6 +128,7 @@ class UsersController extends AppController
                 }
                  $this->Flash->error('Votre identifiant ou votre mot de passe est incorrect.');
           }
+        
       }
 
    //déconnexion
@@ -133,6 +143,7 @@ class UsersController extends AppController
          parent::initialize();
         // Ajoute l'action 'add' à la liste des actions autorisées.
          $this->Auth->allow(['logout', 'add']);
+         $this->Auth->deny(['view']);
     }
 
 

@@ -10,7 +10,7 @@ body {
 	font-size: 25px;
 	font-family: 'Raleway', 'arial';
 	font-weight: 100;
-  }
+	}
   
 .b {
 	color: white;
@@ -23,9 +23,8 @@ body {
   .np{
 	margin-top: 20vh;
 	line-height:20px;
-	opacity: 0.5;
-	
-  }
+	/* opacity: 0.5; */
+	}
 
   .logo {
 	margin-top: 20vh;
@@ -36,7 +35,12 @@ body {
 	text-align: center;
 	color: #fff;
   }
-
-
+  .message {
+  	color: red;
+  	}
   
-  
+
+  input[type="text"], input[type="password"] {
+  	background-color: rgba(255,255,255, 0.1);
+  	font-size: 1.1rem;
+  }

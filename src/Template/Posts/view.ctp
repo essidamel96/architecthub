@@ -4,7 +4,12 @@
  * @var \App\Model\Entity\Post $post
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
+
+    <?= $this->Html->script('three/three.js'); ?>
+    <?= $this->Html->script('three/controls/OrbitControls.js'); ?>
+    <?= $this->Html->script('three/loaders/GLTFLoader.js'); ?>
+    <?= $this->Html->script('viewer.js'); ?>
+    <nav class="col-sm-3" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('Edit Post'), ['action' => 'edit', $post->id]) ?> </li>
@@ -13,9 +18,9 @@
         <li><?= $this->Html->link(__('New Post'), ['action' => 'add']) ?> </li>
     </ul>
 </nav>
-<div class="posts view large-9 medium-8 columns content">
-    <h3><?= h($post->id) ?></h3>
-    <table class="vertical-table">
+<div class="col-sm-9">
+    <h1><?= h($post->id) ?></h1>
+    <table class="table table-bordered">
         <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($post->id) ?></td>
@@ -34,8 +39,10 @@
         </tr>
     </table>
     <div class="row">
-        <h4><?= __('Content') ?></h4>
+        <h3><?= __('Content') ?></h3>
         <?= $this->Text->autoParagraph(h($post->content)); ?>
-        <img src="/files/Posts/photo/<?= $post->photo ?>" />
+        
+        <div style="width:300px; height:200px" class="viewer" id="viewer" data-src="/files/Posts/photo/<?= $post->photo ?>"></div>
+          
     </div>
 </div>
