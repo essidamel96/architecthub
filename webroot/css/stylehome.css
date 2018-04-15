@@ -1,0 +1,201 @@
+.home {
+    height: 100vh;
+    background: radial-gradient(circle farthest-corner at top, rgb(233, 150, 182), rgb(56, 176, 245));
+    font-family: 'Press Start 2P', cursive;
+  
+  }
+  
+  .product-wrap {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    /*WebKit est une bibliothèque logicielle libre permettant aux développeurs d'intégrer facilement un moteur de rendu de pages Web*/
+    -webkit-transform: translateX(-50%); /*permet de déplacer un élément horizontalement*/
+            transform: translateX(-50%);
+   text-align: center;
+   
+  }
+  .product-wrap h1 {
+    font-size: 5rem;
+  }
+  .product-wrap p {
+    font-family: "titillium web";
+    font-size: 1.5rem;
+  }
+  .cube-wrapper {
+    position: relative;
+    top: 60%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);/*deplacer les cubes selon les axes x et y*/
+            transform: translate(-50%, -50%);
+    width: 600px;
+    height:100vh;
+  }
+  .b {
+    
+    letter-spacing: 0.1rem;
+    bottom: 15%;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    padding: 1.5rem 4rem; /*definir la taille de bouton*/
+    cursor: pointer;
+    color: white;
+    background: rgb(226, 70, 122);
+    border: none;
+    transition: all 0.5s ease;
+  }
+
+ 
+
+
+  .cube,
+  .cube2,
+  .cube3 {
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+    -webkit-transform: perspective(500px);
+            transform: perspective(500px);
+  }
+  .cube {
+    position: absolute;
+    top: 35%;
+    left: 45%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    -webkit-animation: oppo 4s ease-in-out infinite;
+            animation: oppo 4s ease-in-out infinite;
+    -webkit-animation-delay: 0.5s;
+            animation-delay: 0.5s;
+  }
+  .cube .left,
+  .cube .right {
+    -webkit-animation-delay: 0.5s;
+            animation-delay: 0.5s;
+  }
+  .cube2 {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    -webkit-animation: oppo2 4s ease-in-out infinite;
+            animation: oppo2 4s ease-in-out infinite;
+  }
+  .cube3 {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    -webkit-animation: oppo2 4s ease-in-out infinite;
+            animation: oppo2 4s ease-in-out infinite;
+    -webkit-animation-delay: 1s;
+            animation-delay: 1s;
+  }
+  .cube3 .left,
+  .cube3 .right {
+    -webkit-animation-delay: 1s;
+            animation-delay: 1s;
+  }
+  .top {
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background: #333;
+    -webkit-transform: rotateX(60deg) rotateZ(45deg);
+            transform: rotateX(60deg) rotateZ(45deg);
+  }
+  .left {
+    position: absolute;
+    top: 34px;
+    left: -10px;
+    width: 35px;
+    height: 50px;
+    background: #222;
+    -webkit-transform: skewY(27deg);
+            transform: skewY(27deg);
+    -webkit-animation: bump 4s ease-in-out infinite;
+            animation: bump 4s ease-in-out infinite;
+  }
+  .right {
+    position: absolute;
+    top: 34px;
+    left: 25px;
+    width: 35px;
+    height: 50px;
+    background: #2e2e2e;
+    -webkit-transform: skewY(-27deg);
+            transform: skewY(-27deg);
+    -webkit-animation: bump 4s ease-in-out infinite;
+            animation: bump 4s ease-in-out infinite;
+  }
+  @-webkit-keyframes oppo {
+    0% {
+      top: 35%;
+    }
+    50% {
+      top: 40%;
+    }
+    100% {
+      top: 35%;
+    }
+  }
+  @keyframes oppo {
+    0% {
+      top: 35%;
+    }
+    50% {
+      top: 40%;
+    }
+    100% {
+      top: 35%;
+    }
+  }
+  @-webkit-keyframes oppo2 {
+    0% {
+      top: 40%;
+    }
+    50% {
+      top: 45%;
+    }
+    100% {
+      top: 40%;
+    }
+  }
+  @keyframes oppo2 {
+    0% {
+      top: 40%;
+    }
+    50% {
+      top: 45%;
+    }
+    100% {
+      top: 40%;
+    }
+  }
+  @-webkit-keyframes bump {
+    0% {
+      height: 50px;
+    }
+    50% {
+      height: 30px;
+    }
+    100% {
+      height: 50px;
+    }
+  }
+  @keyframes bump {
+    0% {
+      height: 50px;
+    }
+    50% {
+      height: 30px;
+    }
+    100% {
+      height: 50px;
+    }
+  }
+  
