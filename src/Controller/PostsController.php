@@ -116,4 +116,25 @@ class PostsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function like($id) {
+        //$post = $this->Posts->get($id);
+        $this->loadModel('Likes');
+        $likes = $this->Likes->find()->where(
+            ['post_id' => $id, 'user_id' => $this->Auth->user('user_id')])
+            ->count();
+
+        if ($likes > 0) {
+            $this->Likes->query()->delete()
+            ->where(['post_id' => $id, 'user_id' => $this->Auth->user('user_id')])
+            ->execute();
+        } else {
+            $this->Likes->query()->insert(['user_id', 'post_id'])
+            ->values([
+                'user_id' => $this->Auth->user('user_id'),
+                'post_id' => $id,
+            ])->execute();
+        }
+        return $this->redirect($this->referer()); //refraicher la page 
+    }
 }

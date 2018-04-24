@@ -6,20 +6,21 @@ let scene, camera, renderer, cube, controls;
             renderer = new THREE.WebGLRenderer({ //création du render qui permet d'afficher la scène
                 antialias: true
             });
+            const container = document.getElementById("viewer");
             renderer.setPixelRatio(window.devicePixelRatio);
-            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setSize(container.clientWidth, container.clientHeight);
             renderer.gammaOutput = true;
             renderer.physicallyCorrectLights = true;
-            document.getElementById("viewer").appendChild(renderer.domElement);
+            container.appendChild(renderer.domElement);
 
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000); //création de la camera. Elle indique la façon et l'endroit d'ou la scène sera regardée
-            camera.position.set(-1.8, 0.9, -2.7); //définir la position de camera
+            camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000); //création de la camera. Elle indique la façon et l'endroit d'ou la scène sera regardée
+            camera.position.set(-100.8, 100.9, -250.7); //définir la position de camera
             controls = new THREE.OrbitControls(camera); //permet de se délpacer autour de l'objet et de faire des zoomin et zoomout
             controls.target.set(0, -0.2, -0.2);
             controls.update();
         }
 
-        
+        /*
         function generate_cube() {
             var geometry = new THREE.BoxGeometry(1, 1, 1); //forme de l'objet(taille et aspect)
             var material = new THREE.MeshBasicMaterial({ //texture de l'objet
@@ -30,6 +31,7 @@ let scene, camera, renderer, cube, controls;
             cube = new THREE.Mesh(geometry, material); //creation d'un cube
             scene.add(cube); // ajouter le cube à la scène
         }
+        */
 
         function upload_gltf() {
             let url = document.getElementById("viewer").dataset.src;
@@ -90,14 +92,14 @@ let scene, camera, renderer, cube, controls;
         // ajouter une animation
         function animate() {
             requestAnimationFrame(animate);//permet d’optimiser les animations, d’arrêter l’animation si l’onglet est inactif et permet de conserver la batterie
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
+            //cube.rotation.x += 0.01;
+            //cube.rotation.y += 0.01;
             renderer.render(scene, camera); //appel de la méthode render pour afficher la scène
         }
 //utilisation d'une fonction jQuery
  $(function() {       
         init();
-        generate_cube();
+        //generate_cube();
         animate();
         upload_gltf();
         addLight();
