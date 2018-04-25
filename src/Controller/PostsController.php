@@ -119,12 +119,12 @@ class PostsController extends AppController
 
     public function like($id) {
         //$post = $this->Posts->get($id);
-        $this->loadModel('Likes');
+        $this->loadModel('Likes'); //utiliser une table de model/collection qui n’est pas le model du controller par défaut.
         $likes = $this->Likes->find()->where(
             ['post_id' => $id, 'user_id' => $this->Auth->user('user_id')])
             ->count();
 
-        if ($likes > 0) {
+        if ($likes > 0) { //si 1
             $this->Likes->query()->delete()
             ->where(['post_id' => $id, 'user_id' => $this->Auth->user('user_id')])
             ->execute();
@@ -135,6 +135,25 @@ class PostsController extends AppController
                 'post_id' => $id,
             ])->execute();
         }
-        return $this->redirect($this->referer()); //refraicher la page 
+        return $this->redirect($this->referer()); //actualiser la page 
+    }
+
+    public function comment($id){
+
+        $this->loadModel('Comments');
+        
+            $this->Comments->query()->insert(['user_id', 'post_id', 'comment'])
+            ->values([
+                'user_id' => $this->Auth->user('user_id'),
+                'post_id' => $id,
+                'comment'=>$Comments,
+            ])->execute();
+
+            $Comments = $Comments->get( [
+                'contain' => ['Comment']
+             ]);
+        
+        return $this->redirect($this->referer());
+        
     }
 }
