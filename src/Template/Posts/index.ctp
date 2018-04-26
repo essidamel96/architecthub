@@ -74,8 +74,12 @@ $this->assign('title', "Posts");
                 </td>
 
 <td>
-<textarea name='text' placeholder="Add Comment"></textarea>
-<button type="button" id="submit">  Add Comment </button>
+<?= $this->Form->create(null, ['url' => ['action' => 'comment', $post->id]]) ?>
+<?php
+ echo $this->Form->control('comment', ['placeholder' => 'Add Comment', 'type' => 'textarea']);
+echo $this->Form->button('Submit');
+?>
+<?= $this->Form->end() ?>
 </td>
             </tr>
             <?php endforeach; ?>
@@ -98,4 +102,5 @@ $this->assign('title', "Posts");
 </div>
 
 </body>
+</html>
 </html>

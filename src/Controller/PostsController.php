@@ -7,6 +7,8 @@ use App\Controller\AppController;
     
 use Cake\Network\Exception\NotFoundException;
 
+use Cake\Http\ServerRequest;
+
 /**
  * Posts Controller
  *
@@ -139,21 +141,18 @@ class PostsController extends AppController
     }
 
     public function comment($id){
-
+        $comment = $this->request->getData('comment');
         $this->loadModel('Comments');
         
             $this->Comments->query()->insert(['user_id', 'post_id', 'comment'])
             ->values([
                 'user_id' => $this->Auth->user('user_id'),
                 'post_id' => $id,
-                'comment'=>$Comments,
+                'comment'=>$Comment,
             ])->execute();
-
-            $Comments = $Comments->get( [
-                'contain' => ['Comment']
-             ]);
         
         return $this->redirect($this->referer());
         
     }
 }
+
