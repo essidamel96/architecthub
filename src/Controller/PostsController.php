@@ -37,13 +37,16 @@ class PostsController extends AppController
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null) 
+    public function view($id) 
     { 
+        // nous utilisons get() plutôt que find('all') parce que nous voulons seulement récupérer les informations d’un seul post
         $post = $this->Posts->get($id, [
             'contain' => []
         ]);
-
+        $this->loadModel("Comments");
+        $comments = $this->Comments->find()->where(['post_id' => $id]);
         $this->set('post', $post);
+        $this->set('comments', $comments);
     }
 
     /**
@@ -54,7 +57,7 @@ class PostsController extends AppController
     public function add()
     {
         $post = $this->Posts->newEntity(); 
-        if ($this->request->is('post')) {// pour vériﬁer que la requête possède bien le verbe HTTP POST
+        if ($this->request->is('post')) {// pour vériﬁer que la requête est de type POST
             $post = $this->Posts->patchEntity($post, $this->request->getData());
             $post->user_id = $this->Auth->user('user_id');
             if ($this->Posts->save($post)) {
@@ -104,7 +107,7 @@ class PostsController extends AppController
      */
     public function delete($id = null)//prend comme parametre l'id de l'element à supprimer
     {
-        $this->request->allowMethod(['post', 'delete']);
+        $this->request->allowMethod(['post', 'delete']);// la méthode allowMethod() lancera une exception Sil’utilisateuressaied’aller supprimer un article avec une requête GET
         $post = $this->Posts->get($id);
     
         if ($post->user_id != $this->Auth->user('user_id')) {
@@ -148,7 +151,7 @@ class PostsController extends AppController
             ->values([
                 'user_id' => $this->Auth->user('user_id'),
                 'post_id' => $id,
-                'comment'=>$Comment,
+                'comment'=>$comment,
             ])->execute();
         
         return $this->redirect($this->referer());
