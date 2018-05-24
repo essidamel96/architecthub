@@ -48,6 +48,11 @@ class PostsTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
+
+        $this->belongsTo('Domaines', [
+            'foreignKey' => 'domaine_id',
+            'joinType' => 'INNER'
+        ]);
         $this->addBehavior('Josegonzalez/Upload.Upload', [
             'photo',
         ]);
@@ -74,8 +79,7 @@ class PostsTable extends Table
 
         $validator
             ->dateTime('posted_at')
-            ->requirePresence('posted_at', 'create')
-            ->notEmpty('posted_at');
+            ->allowEmpty('posted_at');
 
         $validator
             ->requirePresence('photo')
@@ -88,6 +92,7 @@ class PostsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
+        $rules->add($rules->existsIn(['domaine_id'], 'Domaines'));
 
         return $rules;
     }

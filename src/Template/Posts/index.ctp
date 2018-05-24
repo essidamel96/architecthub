@@ -30,6 +30,10 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 	
 <body class="d">
 
+<?= $this->Form->create(null, ['type' => 'get']) ?>
+<?= $this->Form->control('domaine_id', ['options' => $domaines]) ?>
+<button>Filter</button>
+<?= $this->Form->end() ?> 
 <div class="posts">
     
   <div class="gallery">  

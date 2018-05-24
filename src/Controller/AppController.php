@@ -64,8 +64,9 @@ class AppController extends Controller
                               'controller' => 'Users', 
                               'action' => 'login'
                              ],
-// Si pas autorisé, on renvoit sur la page précédente 'unauthorizedRedirect' =>
- $this->referer() ]);
+                             'authorize'=> array('Controller'),
+// Si pas autorisé, on renvoit sur la page précédente 
+'unauthorizedRedirect' =>$this->referer() ]);
 // Permet à l'action "display" de notre PagesController de continuer à fonctionner. Autorise également les actions "read-only".
  $this->Auth->allow(['display', 'view', 'index']);
 
@@ -74,5 +75,12 @@ class AppController extends Controller
     public function beforeFilter(Event $event) { 
         //$this->Auth->allow(['index', 'view', 'display']); 
         $this->Auth->config('authenticate', ['Form']);
+    }
+
+    public function isAuthorized($user){
+        if(isset($user['role']) && $user['role']==='admin'){
+            return true;
+        }
+        return false;
     }
 }

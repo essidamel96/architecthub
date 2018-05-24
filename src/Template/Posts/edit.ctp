@@ -21,7 +21,9 @@
        
         <div class="form-group">
     <label>Description</label>
-        <?php   echo $this->Form->textarea('content', ['placeholder' => 'Description','rows' => '5', 'class' => 'form-control']);//pour créer un élément de formulaire du même nom ?>
+        <?php   echo $this->Form->textarea('content', ['placeholder' => 'Description','rows' => '5', 'class' => 'form-control']);//pour créer un élément de formulaire du même nom 
+                echo $this->Form->control('domaine_id', ['options' => $domaines, 'empty' => true]);
+        ?>
 </div>
            <?php  echo"<br>"; ?>
          

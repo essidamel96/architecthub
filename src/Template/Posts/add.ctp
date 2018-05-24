@@ -24,8 +24,11 @@
            <?php  echo"<br>"; ?>
            <div class="form-group">
                 <label>Photo</label>
-                <?php   echo $this->Form->control('photo', ['type' => 'file', 'label' => false, 'class' => 'form-control']);  ?>
-           </div>
+                <?php
+                echo $this->Form->control('photo', ['type' => 'file', 'label' => false, 'class' => 'form-control']);
+                ?>
+                <?= $this->Form->control('domaine_id', ['options' => $domaines]) ?>
+                </div>
            <?php  echo"<br>"; ?>          
        
     <button class='btn btn-primary'><i class="fas fa-plus"></i> Add</button>

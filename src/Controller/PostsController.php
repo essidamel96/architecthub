@@ -25,9 +25,15 @@ class PostsController extends AppController
      */
      public function index()
     {
-        $posts = $this->paginate($this->Posts);
-
-        $this->set(compact('posts'));//la méthode set() permet de passer les articles récupérés au Template 
+        $domaine_id = $this->request->getQuery('domaine_id');
+        if ($domaine_id) {
+            $posts = $this->paginate($this->Posts->find()->where(['domaine_id' => $domaine_id]));
+        } else {
+            $posts = $this->paginate($this->Posts);
+        }
+        $this->loadModel('Domaines');
+        $domaines = $this->Domaines->find('list', ['limit' => 200]);
+        $this->set(compact('posts', 'domaines'));//la méthode set() permet de passer les articles récupérés au Template 
     }
 
     /**
@@ -41,7 +47,7 @@ class PostsController extends AppController
     { 
         // nous utilisons get() plutôt que find('all') parce que nous voulons seulement récupérer les informations d’un seul post
         $post = $this->Posts->get($id, [
-            'contain' => []
+            'contain' => ['Domaines']
         ]);
         $this->loadModel("Comments");
         $comments = $this->Comments->find()->where(['post_id' => $id]);
@@ -67,7 +73,9 @@ class PostsController extends AppController
             }
             $this->Flash->error(__('The post could not be saved. Please, try again.'));
         }
-        $this->set(compact('post'));
+        $this->loadModel('Domaines');
+        $domaines = $this->Domaines->find('list', ['limit' => 200]);
+        $this->set(compact('post', 'domaines'));
     }
 
     /**
@@ -95,7 +103,9 @@ class PostsController extends AppController
           } 
             $this->Flash->error(__('The post could not be saved. Please, try again.'));
         }
-        $this->set(compact('post'));
+        $this->loadModel('Domaines');
+        $domaines = $this->Domaines->find('list', ['limit' => 200]);
+        $this->set(compact('post', 'domaines'));
     }
 
     /**

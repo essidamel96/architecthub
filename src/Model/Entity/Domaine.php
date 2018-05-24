@@ -4,15 +4,13 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Post Entity
+ * Domaine Entity
  *
- * @property int $id
- * @property string $content
- * @property \Cake\I18n\FrozenTime $posted_at
- * @property \Cake\I18n\FrozenTime $created
- * @property \Cake\I18n\FrozenTime $modified
+ * @property int $domaine_id
+ * @property string $name
+ * @property int $parent_id
  */
-class Post extends Entity
+class Domaine extends Entity
 {
 
     /**
@@ -25,12 +23,7 @@ class Post extends Entity
      * @var array
      */
     protected $_accessible = [
-        'photo'=>true,
-        'content' => true,
-        'posted_at' => true,
-        'created' => true,
-        'modified' => true,
-        'domaine_id' => true,
-        'user_id' => false,
+        'name' => true,
+        'parent_id' => true
     ];
 }
