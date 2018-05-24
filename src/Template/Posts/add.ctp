@@ -4,23 +4,34 @@
  * @var \App\Model\Entity\Post $post
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Posts'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
+<!DOCTYPE html>
+<html>
+    <head>
+<?= $this->Html->css('stylepostsadd.css') ?>
+</head>
+
+<body>
+<div class="form">
 <div class="posts form large-9 medium-8 columns content">
     <?= $this->Form->create($post, ['type' => 'file']) ?> <!--#<form method="post" action="/Posts/add">-->
-    <fieldset>
-        <legend><?= __('Add Post') ?></legend>
-        <?php
-            echo $this->Form->control('content');//pour créer un élément de formulaire du même nom
-            echo $this->Form->control('photo', ['type' => 'file']); 
-            echo $this->Form->control('posted_at');
-            
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    
+        <legend><h1><center><?= __('Add New Post') ?></center></h1></legend>
+    
+    <div class="form-group">
+    <label>Description</label>
+        <?php   echo $this->Form->textarea('content', ['placeholder' => 'Description','rows' => '5', 'class' => 'form-control']);//pour créer un élément de formulaire du même nom ?>
+</div>
+           <?php  echo"<br>"; ?>
+           <div class="form-group">
+                <label>Photo</label>
+                <?php   echo $this->Form->control('photo', ['type' => 'file', 'label' => false, 'class' => 'form-control']);  ?>
+           </div>
+           <?php  echo"<br>"; ?>          
+       
+    <button class='btn btn-primary'><i class="fas fa-plus"></i> Add</button>
     <?= $this->Form->end() ?> <!--pour fermer le formulaire-->
 </div>
+</div>
+
+</body>
+</html>

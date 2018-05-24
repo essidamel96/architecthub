@@ -1,21 +1,279 @@
 <?= $this->Flash->render() ?>
 
-<div class="content-profile-page">
-   <div class="profile-user-page card">
-      <div class="img-user-profile">
-        <img class="profile-bgHome" src="https://37.media.tumblr.com/88cbce9265c55a70a753beb0d6ecc2cd/tumblr_n8gxzn78qH1st5lhmo1_1280.jpg" />
-        <img class="avatar" src="http://gravatar.com/avatar/288ce55a011c709f4e17aef7e3c86c64?s=200" alt="jofpin"/>
-           </div>
-          <button>Follow</button>
-          <div class="user-profile-data">
-            <h1>Jose Pino</h1>
-            <p>github.com/jofpin</p>
-          </div> 
-          <div class="description-profile">Front-end | Security Researcher | CSS Warrior | <a href="https://twitter.com/bullgit" title="bullgit"><strong>@bullgit</strong></a> | I love to create small things for the internet!</div>
-       <ul class="data-user">
-        <li><a><strong>3390</strong><span>Posts</span></a></li>
-        <li><a><strong>718</strong><span>Followers</span></a></li>
-        <li><a><strong>239</strong><span>Following</span></a></li>
-       </ul>
+    <div>
+
+<div class="container">
+
+  <div class="profile">
+
+    <div class="profile-image">
+
+      <img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces">
+
+    </div>
+
+    <div class="profile-user-settings">
+
+      <h1 class="profile-user-name">Amel</h1>
+
+      
+
+    </div>
+
+    <div class="profile-stats">
+
+      <ul>
+        <li><span class="profile-stat-count">164</span> posts</li>
+        <li><span class="profile-stat-count">188</span> followers</li>
+        <li><span class="profile-stat-count">206</span> following</li>
+      </ul>
+
+    </div>
+
+    <div class="profile-bio">
+
+      <p>Live to fly. Fly to live 📷✈️🏕️</p>
+
+    </div>
+
+  </div>
+  <!-- End of profile section -->
+
+</div>
+<!-- End of container  -->
+
+</div>
+
+<main>
+
+<div class="container">
+
+  <div class="gallery">
+
+    <div class="gallery-item">
+
+    <a href="<?= $this->Url->build(['controller' => 'Posts','action' => 'add']) ?>"><img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image"></a> 
+
+      <div class="gallery-item-info">
+
+        <ul>
+          <li class="gallery-item-likes"><i class="fas fa-heart"></i> 56</li>
+          <li class="gallery-item-comments"><i class="fas fa-comment"></i> 2</li>
+        </ul>
+
+      </div>
+
+    </div>
+   
+
+<div class="d">
+    <div class="gallery-item">
+
+      <img src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop" class="gallery-image">
+
+      <div class="gallery-item-info">
+
+        <ul>
+          <li class="gallery-item-likes"><i class="fas fa-heart"></i> 89</li>
+          <li class="gallery-item-comments"><i class="fas fa-comment"></i> 5</li>
+        </ul>
+
+      </div>
+
+    </div>
+    </div>
+
+<div class="d">
+    <div class="gallery-item">
+
+      <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop" class="gallery-image">
+      
+
+      <div class="gallery-item-info">
+
+        <ul>
+          <li class="gallery-item-likes"><i class="fas fa-heart"></i> 42</li>
+          <li class="gallery-item-comments"><i class="fas fa-comment"></i> 1</li>
+        </ul>
+
+      </div>
+      
       </div>
     </div>
+
+    <div class="gallery-item">
+
+      <img src="https://images.unsplash.com/photo-1502630859934-b3b41d18206c?w=500&h=500&fit=crop" class="gallery-image">
+
+      <div class="gallery-item-type">
+
+        <i class="fas fa-video"></i>
+
+      </div>
+
+      <div class="gallery-item-info">
+
+        <ul>
+          <li class="gallery-item-likes"><i class="fas fa-heart"></i> 38</li>
+          <li class="gallery-item-comments"><i class="fas fa-comment"></i> 0</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="gallery-item">
+
+      <img src="https://images.unsplash.com/photo-1498471731312-b6d2b8280c61?w=500&h=500&fit=crop" class="gallery-image">
+
+      <div class="gallery-item-type">
+
+        <i class="fas fa-clone"></i>
+
+      </div>
+
+      <div class="gallery-item-info">
+
+        <ul>
+          <li class="gallery-item-likes"><i class="fas fa-heart"></i> 47</li>
+          <li class="gallery-item-comments"><i class="fas fa-comment"></i> 1</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="gallery-item">
+
+      <img src="https://images.unsplash.com/photo-1515023115689-589c33041d3c?w=500&h=500&fit=crop" class="gallery-image">
+
+      <div class="gallery-item-info">
+
+        <ul>
+          <li class="gallery-item-likes"><i class="fas fa-heart"></i> 94</li>
+          <li class="gallery-item-comments"><i class="fas fa-comment"></i> 3</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="gallery-item">
+
+      <img src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=500&h=500&fit=crop" class="gallery-image">
+
+      <div class="gallery-item-type">
+
+        <i class="fas fa-clone"></i>
+
+      </div>
+
+      <div class="gallery-item-info">
+
+        <ul>
+          <li class="gallery-item-likes"><i class="fas fa-heart"></i> 52</li>
+          <li class="gallery-item-comments"><i class="fas fa-comment"></i> 4</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="gallery-item">
+
+      <img src="https://images.unsplash.com/photo-1515814472071-4d632dbc5d4a?w=500&h=500&fit=crop" class="gallery-image">
+
+      <div class="gallery-item-info">
+
+        <ul>
+          <li class="gallery-item-likes"><i class="fas fa-heart"></i> 66</li>
+          <li class="gallery-item-comments"><i class="fas fa-comment"></i> 2</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="gallery-item">
+
+      <img src="https://images.unsplash.com/photo-1511407397940-d57f68e81203?w=500&h=500&fit=crop" class="gallery-image">
+
+      <div class="gallery-item-type">
+
+        <i class="fas fa-clone"></i>
+
+      </div>
+
+      <div class="gallery-item-info">
+
+        <ul>
+          <li class="gallery-item-likes"><i class="fas fa-heart"></i> 45</li>
+          <li class="gallery-item-comments"><i class="fas fa-comment"></i> 0</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="gallery-item">
+
+      <img src="https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?w=500&h=500&fit=crop" class="gallery-image">
+
+      <div class="gallery-item-info">
+
+        <ul>
+          <li class="gallery-item-likes"><i class="fas fa-heart"></i> 34</li>
+          <li class="gallery-item-comments"><i class="fas fa-comment"></i> 1</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="gallery-item">
+
+      <img src="https://images.unsplash.com/photo-1505058707965-09a4469a87e4?w=500&h=500&fit=crop" class="gallery-image">
+
+      <div class="gallery-item-info">
+
+        <ul>
+          <li class="gallery-item-likes"><i class="fas fa-heart"></i> 41</li>
+          <li class="gallery-item-comments"><i class="fas fa-comment"></i> 0</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="gallery-item">
+
+      <img src="https://images.unsplash.com/photo-1423012373122-fff0a5d28cc9?w=500&h=500&fit=crop" class="gallery-image">
+
+      <div class="gallery-item-type">
+
+        <i class="fas fa-video"></i>
+
+      </div>
+
+      <div class="gallery-item-info">
+
+        <ul>
+          <li class="gallery-item-likes"><i class="fas fa-heart"></i> 30</li>
+          <li class="gallery-item-comments"><i class="fas fa-comment"></i> 2</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+  <!-- End of gallery -->
+
+  <div class="spinner"></div>
+
+</div>
+<!-- End of container -->
+
+</main>
+
+

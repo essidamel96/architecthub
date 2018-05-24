@@ -69,7 +69,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <input type="submit" class="b" value="START NOW">
 </form>
 
-<!--<a href="Posts" class="button">START NOW</a>-->
+
 
 </body>
 </html>

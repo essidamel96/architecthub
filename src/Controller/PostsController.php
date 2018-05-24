@@ -123,6 +123,7 @@ class PostsController extends AppController
     }
 
     public function like($id) {
+    
         //$post = $this->Posts->get($id);
         $this->loadModel('Likes'); //utiliser une table de model/collection qui n’est pas le model du controller par défaut.
         $likes = $this->Likes->find()->where(
@@ -156,6 +157,16 @@ class PostsController extends AppController
         
         return $this->redirect($this->referer());
         
+    }
+
+    public function embed($id) 
+    { 
+        // nous utilisons get() plutôt que find('all') parce que nous voulons seulement récupérer les informations d’un seul post
+        $post = $this->Posts->get($id, [
+            'contain' => []
+        ]);
+        $this->set('post', $post);
+      
     }
 }
 

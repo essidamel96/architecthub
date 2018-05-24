@@ -4,45 +4,73 @@
  * @var \App\Model\Entity\Post $post
  */
 ?>
+<!DOCTYPE html>
+<html>
 
+<head>
     <?= $this->Html->script('three/three.js'); ?>
     <?= $this->Html->script('three/controls/OrbitControls.js'); ?>
+    <?= $this->Html->script('three/controls/DeviceOrientationControls.js'); ?>
     <?= $this->Html->script('three/loaders/GLTFLoader.js'); ?>
     <?= $this->Html->script('viewer.js'); ?>
-    <nav class="col-sm-3" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Post'), ['action' => 'edit', $post->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Post'), ['action' => 'delete', $post->id], ['confirm' => __('Are you sure you want to delete # {0}?', $post->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Posts'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Post'), ['action' => 'add']) ?> </li>
-    </ul>
-</nav>
+    <?= $this->Html->css('stylepostsview.css') ?>
+</head>
+
+<body>
+
 <div class="col-sm-9">
-    <h1><?= h($post->id) ?></h1>
-    <table class="table table-bordered">
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($post->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Posted At') ?></th>
-            <td><?= h($post->posted_at) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($post->created) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Modified') ?></th>
-            <td><?= h($post->modified) ?></td>
-        </tr>
-    </table>
-    <div class="row">
-        <h3><?= __('Content') ?></h3>
-        <?= $this->Text->autoParagraph(h($post->content)); ?>
-        
-        <div style="width:300px; height:200px" class="viewer" id="viewer" data-src="/files/Posts/photo/<?= $post->photo ?>"></div>
-          
-    </div>
+<div class="all">
+
+      <div  style="width:750px; height:350px;overflow:hidden;" class="v" id="viewer" data-src="/files/Posts/photo/<?= $post->photo ?>">
+      
+      </div> </div> </div>
+     
+
+ <div class="r">
+   <div class="desc" <?= $this->Text->autoParagraph(h($post->content)); ?>
 </div>
+  <?php  echo"<br>"; ?>
+        
+
+<?php  echo"<br>"; ?>
+<a type='button' class="embed" href="<?= $this->Url->build(['action' => 'embed', $post->id]) ?>">
+<i class="fas fa-code"></i>
+                  Embed  
+                </a>
+            
+                <a type='Submit' class="share" href="<?= $this->Url->build(['controller'=>'shares','action' => 'add', $post->id]) ?>">
+                <i class="fas fa-share-square"></i>
+                  Share  
+                </a>
+   
+                <?php  echo"<br>"; ?>
+           <?php  echo"<br>"; ?>
+    <i class="far fa-clock"></i> &nbsp; <span class="text-muted"><?= h($post->posted_at) ?></span>
+
+
+    
+
+    
+<?= $this->Form->create(null, ['url' => ['action' => 'comment', $post->id]]) ?>
+<?php  echo"<br>"; ?>
+<?php
+/* echo $this->Form->control('comment', ['placeholder' => 'Add Comment', 'type' => 'textarea']);*/
+echo $this->Form->textarea('comment', ['placeholder' => 'Add Comment','rows' => '4', 'cols' => '30']);
+echo"<br>"; 
+ echo $this->Form->button('Comment');
+?>
+<?= $this->Form->end() ?>
+
+<ul>
+<?php foreach ($comments as $comment): ?>
+    <li><?= $comment->comment ?></li>
+<?php endforeach; ?>
+</ul>
+
+
+
+
+</body>
+
+
+

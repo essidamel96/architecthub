@@ -1,0 +1,32 @@
+body{
+    overflow: scroll;
+}
+
+h3{
+    color: rgb(54, 42, 165);
+}
+
+.all{
+   /* margin:auto;*/
+   margin-top: 70px;
+
+   margin-left: 30px;
+  
+}
+
+.desc{
+    font-size: 20px;
+}
+
+.embed{
+    margin-right: 20px;
+}
+.r{
+    margin-top: 80px;
+}
+.v{
+    border: 3px double brown ;
+}
+ button{
+     background-color: rgb(0, 132, 255);
+ }

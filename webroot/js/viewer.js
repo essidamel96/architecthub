@@ -1,4 +1,4 @@
-let scene, camera, renderer, cube, controls;
+let scene, camera, renderer, cube, controls, deviceControls;
 
         function init() {
             scene = new THREE.Scene(); //créer une scène
@@ -18,9 +18,11 @@ let scene, camera, renderer, cube, controls;
             controls = new THREE.OrbitControls(camera); //permet de se délpacer autour de l'objet et de faire des zoomin et zoomout
             controls.target.set(0, -0.2, -0.2);
             controls.update();
+
+           /* deviceControls = new THREE.DeviceOrientationControls( camera );*/
         }
 
-        /*
+        
         function generate_cube() {
             var geometry = new THREE.BoxGeometry(1, 1, 1); //forme de l'objet(taille et aspect)
             var material = new THREE.MeshBasicMaterial({ //texture de l'objet
@@ -31,15 +33,15 @@ let scene, camera, renderer, cube, controls;
             cube = new THREE.Mesh(geometry, material); //creation d'un cube
             scene.add(cube); // ajouter le cube à la scène
         }
-        */
+        
 
         function upload_gltf() {
             let url = document.getElementById("viewer").dataset.src;
             console.log("File url ", url);
             const loader = new THREE.GLTFLoader(); //chargement d'un objet au format GLTF
             loader.load(
-                '/files/mech_drone/scene.gltf',
-                // url,
+                // '/files/mech_drone/scene.gltf',
+                url,
                 function(gltf) {
                     scene.add(gltf.scene);
                 }
@@ -94,6 +96,7 @@ let scene, camera, renderer, cube, controls;
             requestAnimationFrame(animate);//permet d’optimiser les animations, d’arrêter l’animation si l’onglet est inactif et permet de conserver la batterie
             //cube.rotation.x += 0.01;
             //cube.rotation.y += 0.01;
+          /*  deviceControls.update();*/
             renderer.render(scene, camera); //appel de la méthode render pour afficher la scène
         }
 //utilisation d'une fonction jQuery

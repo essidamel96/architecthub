@@ -1,27 +1,37 @@
 
 .b{
-	background-color: rgb(226, 43, 113);
+	color: rgb(224, 12, 12);
+
 }
 .posts{
+	margin-right: 2%;
+	margin-left: 3%;
+	margin-top: 2%;
 	padding: 10px;
 }
 
-
 .g{
+	
 	border: 5px solid;
 	border-color: rgb(225, 233, 240);
-	width: 220px;
+	width: 270px;
 	
 }
 
-.haut{
-	height: 270px;
-	width: 210px;
-	
+
+button{
+	background-color: rgb(12, 115, 211);
+
+}
+textarea{
+	border-color: rgb(167, 162, 162);
+	width:200px;
 }
 
-.bas{
-	height: 150px;
-	width: 200px;
+.fas{
+	color: blue;
 }
 
+.paginator{
+	margin-left: 550px;
+}

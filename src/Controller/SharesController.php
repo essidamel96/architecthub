@@ -46,20 +46,14 @@ class SharesController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($id)
     {
         $share = $this->Shares->newEntity();
-        if ($this->request->is('post')) {
-            $share = $this->Shares->patchEntity($share, $this->request->getData());
-            if ($this->Shares->save($share)) {
-                $this->Flash->success(__('The share has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The share could not be saved. Please, try again.'));
-        }
-        $this->set('posts', $this->Shares->Posts->find('list'));
-        $this->set(compact('share'));
+        $share->post_id = $id;
+        $share->user_id = $this->Auth->user('user_id');
+        $this->Shares->save($share);
+        $this->Flash->success(__('The post has been shared on your profile.'));
+        return $this->redirect(['controller' => 'posts', 'action' => 'view', $id]);
     }
 
     /**

@@ -14,6 +14,7 @@
  */
 
 $cakeDescription = 'CakePHP: the rapid development php framework';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,14 +22,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->charset() ?><!-- -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $cakeDescription ?>:
+    <?= $cakeDescription ?>
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?> <!-- -->
 
+    <!--
     
     <?= $this->Html->css('base.css') ?>
-    <!--
     <?= $this->Html->css('cake.css') ?>
     -->
     <?= $this->Html->css('bootstrap.css') ?>
@@ -50,47 +51,53 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-<header class="navbar navbar-default">
-  <div class="container-fluid">
-            <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                          <span class="sr-only">Toggle navigation</span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="/">Deco</a>
-                      </div>
+<header>
+
+            <div class="navbar  navbar-fixed-top"><!--navbar-header-->
+            <div class="container-fluid">   
+                        <a class="navbar-brand" href="/"><font size='6px'color='black'><i><i class="fas fa-cubes"></i>&nbsp;Digital</i></font><font size='17px'color='black'><i>FAB</i></font><br><small><font color='black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;See the world in 3D</font></smal></a>
+                      
                   
                       <!-- Collect the nav links, forms, and other content for toggling -->
-                      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <!--    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
                         <ul class="nav navbar-nav  navbar-right">
-                          <li class="active"><a href="/">Accueil</a></li>
-                          <li class=""><?= $this->Html->link(__('Posts'), ['action' => 'index', 'controller' => 'posts']) ?></li>
+                          <li class="active"><a href="/"><font>Accueil</font></a></li>
+                         <li class=""><?= $this->Html->link(__('Posts'), ['action' => 'index', 'controller' => 'posts']) ?></li>
 
                           <?php if ($this->request->session()->read('Auth.User')) : ?>
+                          
                           <li class=""><?= $this->Html->link(__('Profil'), ['action' => 'view', 'controller' => 'users']) ?></li>
+                         
+                          
+                            <li><?= $this->Html->link(__('New Post'), ['action' => 'add', 'controller' => 'posts']) ?></li>
+                      
+
+                         
                           <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i><span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                              <li><a href="#">Parametre</a></li>
-                              <li><a href="#">Reglage</a></li>
+                             
                               <li role="separator" class="divider"></li>
-                              <li><a href="#">Deconnexion</a></li>
+                              <li><a href="<?= $this->Url->build(["controller" => "Users", "action" => "logout"]) ?>">Deconnexion</a></li>
                             </ul>
                           </li>
+
+                          
+
                           <?php else: ?>
+                          <!-- la méthode link(), qui générera un lien HTML avec le texte fourni (le premier paramètre) et l’URL (le second paramètre). -->
                           <li class=""><?= $this->Html->link(__('Login'), ['action' => 'login', 'controller' => 'users']) ?></li>
-                          <li class=""><?= $this->Html->link(__('Register'), ['action' => 'register', 'controller' => 'users']) ?></li>
+                          <li class=""><?= $this->Html->link(__('Register'), ['action' => 'add', 'controller' => 'users']) ?></li>
                           <?php endif ?>
                         </ul>
                       </div><!-- /.navbar-collapse -->
         </div>
+        </div>
         </header>  
     <?= $this->Flash->render() ?>
-    <div class="container clearfix"> <!-- -->
+    <!--<div class="container clearfix">  -->
         <?= $this->fetch('content') ?>
-    </div>
+   <!-- </div>-->
     <footer>
     </footer>
 </body>

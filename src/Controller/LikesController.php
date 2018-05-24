@@ -26,6 +26,7 @@ class LikesController extends AppController
         $likes = $this->paginate($this->Likes);
 
         $this->set(compact('likes'));
+
     }
 
     /**

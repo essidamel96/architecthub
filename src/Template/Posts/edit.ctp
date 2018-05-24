@@ -4,27 +4,41 @@
  * @var \App\Model\Entity\Post $post
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $post->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $post->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Posts'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
+<!DOCTYPE html>
+<html>
+    <head>
+<?= $this->Html->css('stylepostsedit.css') ?>
+</head>
+
+<body>
+<div class="form">
 <div class="posts form large-9 medium-8 columns content">
-    <?= $this->Form->create($post) ?>
-    <fieldset>
-        <legend><?= __('Edit Post') ?></legend>
-        <?php
-            echo $this->Form->control('content');
-            echo $this->Form->control('posted_at');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+    <?= $this->Form->create($post, ['type' => 'file']) ?> <!--#<form method="post" action="/Posts/add">-->
+    
+        <legend><h1><center><?= __('Edit Post') ?></center></h1></legend>
+        <?php  echo"<br>"; ?>
+    
+       
+        <div class="form-group">
+    <label>Description</label>
+        <?php   echo $this->Form->textarea('content', ['placeholder' => 'Description','rows' => '5', 'class' => 'form-control']);//pour créer un élément de formulaire du même nom ?>
 </div>
+           <?php  echo"<br>"; ?>
+         
+           
+
+        <i class="far fa-clock"></i> &nbsp; <span class="text-muted"><?= h($post->posted_at) ?></span>
+          
+       <?php echo"<br>"?>
+       <?php echo"<br>"?>
+
+
+    <button class='btn btn-primary'><i class="fas fa-edit"></i> Edit</button>
+    <?= $this->Form->end() ?> <!--pour fermer le formulaire-->
+</div>
+</div>
+
+</body>
+</html>
+
+
